@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -29,6 +29,10 @@
       box-sizing: border-box;
       overflow-y: auto;
       height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     h1 {
       font-size: 2.5rem;
@@ -42,6 +46,10 @@
       margin-bottom: 20px;
       white-space: pre-line; /* Для корректного отображения переноса строк */
     }
+    .continue-button-container {
+      align-self: flex-start; /* Размещаем кнопку слева */
+      margin-top: 20px;
+    }
     .continue-button {
       background-color: #ff6600;
       color: white;
@@ -50,7 +58,6 @@
       font-size: 1.2rem;
       cursor: pointer;
       border-radius: 5px;
-      margin-top: 20px;
       transition: background-color 0.3s ease;
     }
     .continue-button:hover {
@@ -150,7 +157,11 @@
       
       Готовься, ведь впереди нас ждут новые вопросы, загадки и воспоминания. И каждый из них — это шаг к тому, чтобы стать лучше. Для себя, для друг друга и для этого мира, где так мало искренней любви.
     </p>
-    <button class="continue-button" onclick="goToNextPage()">Продолжить</button>
+    
+    <!-- Кнопка теперь расположена слева от текста -->
+    <div class="continue-button-container">
+      <button class="continue-button" onclick="goToNextPage()">Продолжить</button>
+    </div>
   </div>
 
   <!-- Новая страница (скрыта изначально) -->
