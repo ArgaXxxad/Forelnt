@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -18,7 +18,7 @@
       background-position: center;
       color: white;
       text-align: center;
-      overflow: hidden;
+      overflow: auto;
     }
     .content {
       background-color: rgba(0, 0, 0, 0.7);
@@ -27,9 +27,7 @@
       width: 90%;
       max-width: 1000px;
       box-sizing: border-box;
-      overflow-y: auto;
-      height: 90vh;
-      position: relative; /* Для позиционирования кнопки относительно этого блока */
+      margin-bottom: 20px;
     }
     h1 {
       font-size: 2.5rem;
@@ -51,9 +49,9 @@
       font-size: 1.2rem;
       cursor: pointer;
       border-radius: 5px;
-      position: absolute; /* Позиционирование кнопки */
-      bottom: 20px; /* Отступ снизу */
-      right: 20px; /* Отступ справа */
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
       transition: background-color 0.3s ease;
     }
     .continue-button:hover {
@@ -138,8 +136,8 @@
       Мы должны слушать друг друга не только ушами, но и сердцем.
       
       Мы должны избегать резких суждений, ведь за каждым словом скрывается чья-то история.
+      
       Мы должны уважать чужую правду, даже если она отличается от нашей.
-
       
       А фраза «В этой Вселенной и так маловато искренней любви» — это правда, которую мы часто забываем. Мир полон суеты, эгоизма и страхов. Но именно поэтому так важно дарить друг другу тепло, поддержку и понимание.
       
@@ -153,8 +151,10 @@
       
       Готовься, ведь впереди нас ждут новые вопросы, загадки и воспоминания. И каждый из них — это шаг к тому, чтобы стать лучше. Для себя, для друг друга и для этого мира, где так мало искренней любви.
     </p>
-    <button class="continue-button" onclick="goToNextPage()">Продолжить</button>
   </div>
+
+  <!-- Кнопка продолжить, фиксированная в правом нижнем углу -->
+  <button class="continue-button" id="continue-button" onclick="goToNextPage()">Продолжить</button>
 
   <!-- Новая страница (скрыта изначально) -->
   <div class="new-page-content" id="new-page-content" style="display: none;">
@@ -169,12 +169,14 @@
     function goToNextPage() {
       document.getElementById('main-content').style.display = 'none';
       document.getElementById('new-page-content').style.display = 'block';
+      document.getElementById('continue-button').style.display = 'none'; // Скрыть кнопку на новой странице
     }
 
     // Возврат на основную страницу
     function goBackToMainPage() {
       document.getElementById('main-content').style.display = 'block';
       document.getElementById('new-page-content').style.display = 'none';
+      document.getElementById('continue-button').style.display = 'block'; // Показать кнопку снова
     }
   </script>
 
