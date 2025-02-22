@@ -1,4 +1,3 @@
-
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -11,36 +10,42 @@
       padding: 0;
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
+      align-items: flex-start;
+      height: 100%;
       background-image: url('https://i.pinimg.com/736x/85/6c/3f/856c3f2af48efcc2b454ea2f998da548.jpg');
       background-size: cover;
       background-position: center;
       color: white;
       text-align: center;
-      overflow: auto;
+      overflow-y: auto;
     }
-    .content {
+
+    .content, .new-page-content {
       background-color: rgba(0, 0, 0, 0.7);
-      padding: 30px;
+      padding: 20px;
       border-radius: 10px;
       width: 90%;
       max-width: 1000px;
       box-sizing: border-box;
       margin-bottom: 20px;
+      max-height: 80vh; /* Ограничение высоты */
+      overflow-y: auto; /* Добавление прокрутки */
     }
+
     h1 {
       font-size: 2.5rem;
       color: #ffcc00;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
       margin-bottom: 20px;
     }
+
     p {
       font-size: 1.2rem;
       line-height: 1.6;
       margin-bottom: 20px;
       white-space: pre-line;
     }
+
     .continue-button {
       background-color: #ff6600;
       color: white;
@@ -54,18 +59,31 @@
       right: 20px;
       transition: background-color 0.3s ease;
     }
+
     .continue-button:hover {
       background-color: #cc5200;
     }
 
     /* Стили для мобильных устройств */
     @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
+      body {
+        padding: 10px;
+        justify-content: flex-start;
       }
+
+      .content, .new-page-content {
+        padding: 15px;
+        max-height: 70vh; /* Уменьшаем высоту для мобильных устройств */
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
       p {
         font-size: 1rem;
       }
+
       .continue-button {
         font-size: 1rem;
         padding: 12px 25px;
@@ -73,17 +91,6 @@
     }
 
     /* Стили для новой страницы */
-    .new-page-content {
-      background-color: rgba(0, 0, 0, 0.7);
-      color: white;
-      padding: 30px;
-      border-radius: 10px;
-      max-width: 800px;
-      width: 90%;
-      box-sizing: border-box;
-      text-align: center;
-    }
-
     .new-page-content img {
       max-width: 100%;
       height: auto;
@@ -111,6 +118,7 @@
       margin-top: 20px;
       transition: background-color 0.3s ease;
     }
+
     .back-button:hover {
       background-color: #cc5200;
     }
