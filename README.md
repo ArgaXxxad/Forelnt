@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -13,7 +13,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-image: url('https://i.pinimg.com/736x/85/6c/3f/856c3f2af48efcc2b454ea2f998da548.jpg'); /* Укажите ваш URL фона здесь */
+      background-image: url('https://i.pinimg.com/736x/85/6c/3f/856c3f2af48efcc2b454ea2f998da548.jpg');
       background-size: cover;
       background-position: center;
       color: white;
@@ -29,10 +29,7 @@
       box-sizing: border-box;
       overflow-y: auto;
       height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      position: relative; /* Для позиционирования кнопки относительно этого блока */
     }
     h1 {
       font-size: 2.5rem;
@@ -44,11 +41,7 @@
       font-size: 1.2rem;
       line-height: 1.6;
       margin-bottom: 20px;
-      white-space: pre-line; /* Для корректного отображения переноса строк */
-    }
-    .continue-button-container {
-      align-self: flex-start; /* Размещаем кнопку слева */
-      margin-top: 20px;
+      white-space: pre-line;
     }
     .continue-button {
       background-color: #ff6600;
@@ -58,6 +51,9 @@
       font-size: 1.2rem;
       cursor: pointer;
       border-radius: 5px;
+      position: absolute; /* Позиционирование кнопки */
+      bottom: 20px; /* Отступ снизу */
+      right: 20px; /* Отступ справа */
       transition: background-color 0.3s ease;
     }
     .continue-button:hover {
@@ -142,8 +138,8 @@
       Мы должны слушать друг друга не только ушами, но и сердцем.
       
       Мы должны избегать резких суждений, ведь за каждым словом скрывается чья-то история.
-      
       Мы должны уважать чужую правду, даже если она отличается от нашей.
+
       
       А фраза «В этой Вселенной и так маловато искренней любви» — это правда, которую мы часто забываем. Мир полон суеты, эгоизма и страхов. Но именно поэтому так важно дарить друг другу тепло, поддержку и понимание.
       
@@ -157,11 +153,7 @@
       
       Готовься, ведь впереди нас ждут новые вопросы, загадки и воспоминания. И каждый из них — это шаг к тому, чтобы стать лучше. Для себя, для друг друга и для этого мира, где так мало искренней любви.
     </p>
-    
-    <!-- Кнопка теперь расположена слева от текста -->
-    <div class="continue-button-container">
-      <button class="continue-button" onclick="goToNextPage()">Продолжить</button>
-    </div>
+    <button class="continue-button" onclick="goToNextPage()">Продолжить</button>
   </div>
 
   <!-- Новая страница (скрыта изначально) -->
