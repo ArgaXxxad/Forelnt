@@ -1,4 +1,4 @@
-<html lang="ru">
+<html lang="ru"> 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +20,7 @@
       overflow-y: auto;
     }
 
-    .content, .new-page-content, .quiz-page-content {
+    .content, .new-page-content, .quiz-page-content, .final-page-content {
       background-color: rgba(0, 0, 0, 0.7);
       padding: 20px;
       border-radius: 10px;
@@ -44,8 +44,8 @@
       line-height: 1.6;
       margin-bottom: 20px;
       white-space: pre-line;
-      max-height: 3000px; /* Задаем максимальную высоту для текста */
-      overflow-y: auto; /* Прокрутка для текста */
+      max-height: 3000px;
+      overflow-y: auto;
     }
 
     .continue-button {
@@ -190,6 +190,19 @@
     <div class="quiz-container" id="quiz"></div>
     <button onclick="checkAnswers()">Завершить викторину</button>
     <p id="result"></p>
+    <button class="continue-button" onclick="goToFinalPage()">Продолжить</button>
+  </div>
+
+  <!-- Финальная страница -->
+  <div class="final-page-content" id="final-page-content" style="display: none;">
+    <h1>ты прошла викторину, и я хочу сказать тебе одну важную вещь: здесь нет правильных или неправильных ответов.</h1>
+    <p>Жизнь — это не только ответы на вопросы, но и умение понимать друг друга, принимать свои ошибки и радоваться каждому моменту.
+      Эта викторина создана не для того, чтобы проверить твои знания, потому что мы можем помнить разное и по своему, а чтобы напомнить тебе, как много мы пережили вместе. Каждый вопрос — это момент, который сделал нас ближе, а каждый ответ — это твоя искренность. 
+      Спасибо, что прошла этот путь со мной.
+      
+      Теперь настало время, пойти и найти QR(Со второй страницы), и дальше попробовать пройти эту "мини игру".
+    </p>
+    <button class="continue-button" onclick="goToMainPage()">Вернуться на главную страницу</button>
   </div>
 
   <script>
@@ -203,6 +216,18 @@
     function goToQuizPage() {
       document.getElementById('new-page-content').style.display = 'none';
       document.getElementById('quiz-page-content').style.display = 'block';
+    }
+
+    // Переход на финальную страницу
+    function goToFinalPage() {
+      document.getElementById('quiz-page-content').style.display = 'none';
+      document.getElementById('final-page-content').style.display = 'block';
+    }
+
+    // Переход на главную страницу
+    function goToMainPage() {
+      document.getElementById('final-page-content').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
     }
 
     // Викторина
@@ -228,7 +253,7 @@
         correct: 0
       },
       {
-        question: "5. Как ты смотрела на меня, даже когда мы расставались?",
+        question: "5. Как Я чаще смотрел на тебя",
         answers: ["С влюблёнными глазами", "С грустью", "С улыбкой"],
         correct: 0
       },
@@ -250,10 +275,10 @@
       {
         question: "9. Кто первый поцеловал другого?",
         answers: ["Я", "Ты", "Никто"],
-        correct: 1
+        correct: 0
       },
       {
-        question: "10. Что ты сказала про жалюзи на нашей первой прогулке?",
+        question: "10. Что ты сказала когда было неловко на нашей первой прогулке?",
         answers: ["Красивая", "Ничего", "Какие красивые жалюзи!"],
         correct: 0
       },
@@ -310,13 +335,24 @@
     function checkAnswers() {
       let score = 0;
       questions.forEach((q, index) => {
-        const userAnswer = index === 7 ? document.getElementById(`answer${index}`).value.toLowerCase() : document.querySelector(`input[name="question${index}"]:checked`);
-        if (userAnswer && (index === 7 ? userAnswer.trim() === q.answers[q.correct].toLowerCase() : parseInt(userAnswer.value) === q.correct)) {
-          score++;
+        let userAnswer;
+        if (index === 7) {
+          // Для 8-го вопроса, проверка на текстовый ответ
+          userAnswer = document.getElementById(`answer${index}`).value.trim().toLowerCase();
+          if (userAnswer) {
+            score++; // Ответ засчитывается, если что-то введено
+          }
+        } else {
+          // Для остальных вопросов проверка на радио-кнопку
+          const selectedAnswer = document.querySelector(`input[name="question${index}"]:checked`);
+          if (selectedAnswer && parseInt(selectedAnswer.value) === q.correct) {
+            score++;
+          }
         }
       });
       document.getElementById('result').innerText = `Ты ответил правильно на ${score} из ${questions.length} вопросов.`;
     }
   </script>
+
 </body>
 </html>
