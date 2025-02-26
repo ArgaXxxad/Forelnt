@@ -44,7 +44,7 @@
       line-height: 1.6;
       margin-bottom: 20px;
       white-space: pre-line;
-      max-height: 1000px; /* Задаем максимальную высоту для текста */
+      max-height: 3000px; /* Задаем максимальную высоту для текста */
       overflow-y: auto; /* Прокрутка для текста */
     }
 
