@@ -310,19 +310,12 @@
     function checkAnswers() {
       let score = 0;
       questions.forEach((q, index) => {
-        if (index === 7) {
-          const answer = document.getElementById(`answer${index}`).value;
-          if (answer.toLowerCase() === q.answers[q.correct].toLowerCase()) {
-            score++;
-          }
-        } else {
-          const selectedAnswer = document.querySelector(`input[name="question${index}"]:checked`);
-          if (selectedAnswer && selectedAnswer.value == q.correct) {
-            score++;
-          }
+        const userAnswer = index === 7 ? document.getElementById(`answer${index}`).value.toLowerCase() : document.querySelector(`input[name="question${index}"]:checked`);
+        if (userAnswer && (index === 7 ? userAnswer.trim() === q.answers[q.correct].toLowerCase() : parseInt(userAnswer.value) === q.correct)) {
+          score++;
         }
       });
-      document.getElementById('result').innerHTML = `Ваш результат: ${score} из ${questions.length}`;
+      document.getElementById('result').innerText = `Ты ответил правильно на ${score} из ${questions.length} вопросов.`;
     }
   </script>
 </body>
